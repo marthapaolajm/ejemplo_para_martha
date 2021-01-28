@@ -27,3 +27,14 @@ reports/herramientas.pdf: reports/herramientas.tex
 # Borrar datos y PDFs
 .PHONY: all clean
 clean:
+	rm --force reports/*.aux
+	rm --force reports/*.bbl
+	rm --force reports/*.blg
+	rm --force reports/*.dvi
+	rm --force reports/*.fdb_latexmk
+	rm --force reports/*.fls
+	rm --force reports/*.log
+	rm --force reports/*.out
+	rm --force reports/*.pdf
+	rm --force reports/*.pytxcode
+	
