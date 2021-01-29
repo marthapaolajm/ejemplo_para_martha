@@ -1,0 +1,24 @@
+# Este es un ejemplo basico de un workflow, para ayudarte a iniciar con Actions.
+
+name: CI
+
+# Controla cuando las acciones se ejecutan. 
+on:
+  # Se dispara the workflow cuando los eventos push y pull suceden.
+  [push, pull_request]
+
+# La ejecucion de un workflow esta hecho de uno o mas trabajos que pueden correr secuecial o en parelelo.
+jobs:
+  # Este workflow contiene una sola tarea.
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Corre un comando de una linea.
+        run: echo ¡Hola, mundo!
+
+      - name: Corre varios comandos.
+        run: |
+          echo Agrega otras acciones para construir,
+          echo prueba, y despega tu proyecto.
