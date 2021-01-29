@@ -18,7 +18,7 @@ jobs:
       - name: Corre un comando de una linea.
         run: echo ¡Hola, mundo!
 
-      - name: Corre varios comandos.
+      - name: Construye imagen
         run: |
           echo Agrega otras acciones para construir,
           echo prueba, y despega tu proyecto.
