@@ -13,12 +13,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Corre un comando de una linea.
-        run: echo ¡Hola, mundo!
-
+      - name: Copia repositorio
+        uses: actions/checkout@v2
       - name: Construye imagen
-        run: |
-          echo Agrega otras acciones para construir,
-          echo prueba, y despega tu proyecto.
+        run: docker build --tag islasgeci .
+      - name: Corre pruebas
+        run: docker run islasgeci make tests
+      - name: Ejecuta objetivo principal del Makefile
+        run: docker run islasgeci make
+      
+
+
