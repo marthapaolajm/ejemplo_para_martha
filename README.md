@@ -7,4 +7,10 @@ En el primer reporte de este repositorio "nuestras herramientas" se describen la
 
 ## Tecnologías usadas
 
-En este repositorio se agregaron cinco archivos, los cuales son: README.md, Makefile, Dockerfile, analyses.json y actions.yml, con el objetivo de aprender a usar las herramientas de GitHub y Git Kraken eficazmente. Cada archivo tiene su finalidad. Makefile, genera tareas pequeñas, como que todos los archivos que empiecen con punto no aparezcan en el repositorio. Dockerfile, construye los contenedores; los cuales trabajan con imágenes, y sirve para recrear una imagen virtual y que cualquiera pueda acceder a ella. analyses.json, se adjunta el archivo de herramientas, donde se describen algunas de las herramientas de ciencias de datos. Y actions.yml copia el repositorio, y corre pruebas en él.
+En este repositorio se agregaron cinco archivos, los cuales son: 
+
+1. README.md
+2. Makefile
+3. Dockerfile
+4. analyses.json 
+5. actions.yml 
