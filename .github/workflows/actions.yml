@@ -1,0 +1,26 @@
+# Este es un ejemplo basico de un workflow, para ayudarte a iniciar con Actions.
+
+name: CI
+
+# Controla cuando las acciones se ejecutan. 
+on:
+  # Se dispara the workflow cuando los eventos push y pull suceden.
+  [push, pull_request]
+
+# La ejecucion de un workflow esta hecho de uno o mas trabajos que pueden correr secuecial o en parelelo.
+jobs:
+  # Este workflow contiene una sola tarea.
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copia repositorio
+        uses: actions/checkout@v2
+      - name: Construye imagen
+        run: docker build --tag islasgeci .
+      - name: Corre pruebas
+        run: docker run islasgeci make tests
+      - name: Ejecuta objetivo principal del Makefile
+        run: docker run islasgeci make
+      
+
+

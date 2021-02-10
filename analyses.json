@@ -1,0 +1,13 @@
+[
+    {
+      "docker_parent_image": "islasgeci/base:13fe",
+      "name": "Herramientas de ciencia de datos",
+      "description": "Describimos algunas de las herramientas de ciencia de datos",
+      "report": "herramientas.pdf",
+      "results": [],
+      "scripts": [],
+      "data": [],
+      "requirements": []
+    }
+  ]
+  
