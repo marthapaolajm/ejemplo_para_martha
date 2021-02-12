@@ -1,3 +1,3 @@
 FROM islasgeci/base:13fe
-COPY . /workdir
+WORKDIR /workdir
 CMD make
