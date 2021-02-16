@@ -8,6 +8,9 @@ endef
 
 # II. Declaración de las variables
 # ================================
+csvMonitoreoSerpientesIslaIsabel = \
+	data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv \
+	data/raw/datapackage.json
 
 # III. Reglas para construir los objetivos principales
 # ====================================================
@@ -21,6 +24,10 @@ reports/herramientas.pdf: reports/herramientas.tex
 # =======================================================================
 # Aquí se copian todas los archivos de datos y figuras que se utilizan como ingredientes.
 
+$(csvMonitoreoSerpientesIslaIsabel):
+	$(checkDirectories) 
+	descarga_datos $(@F) $(@D)
+	
 # V Reglas del resto de los phonys
 # =================================
 
@@ -37,4 +44,4 @@ clean:
 	rm --force reports/*.out
 	rm --force reports/*.pdf
 	rm --force reports/*.pytxcode
-	
+	rm --recursive --force data
