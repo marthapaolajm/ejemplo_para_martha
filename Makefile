@@ -15,6 +15,8 @@ endef
 
 reports/herramientas.pdf: reports/herramientas.tex
 	cd $(<D) && pdflatex $(<F)
+	cd $(<D) && bibtex herramientas
+	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pdflatex $(<F)
 
 # IV. Reglas para construir las dependencias de los objetivos principales
@@ -26,6 +28,7 @@ reports/herramientas.pdf: reports/herramientas.tex
 
 # Borrar datos y PDFs
 .PHONY: all clean
+
 clean:
 	rm --force reports/*.aux
 	rm --force reports/*.bbl
