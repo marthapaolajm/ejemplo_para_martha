@@ -1,5 +1,11 @@
 \documentclass{article}
 \usepackage{csvsimple}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{pgfplotstable}
+\usepackage[a4paper,top=1cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry} 
+\pgfplotstableread[col sep=comma]{tables/resumen_cinco_numero_serpientes.csv}\ResumenCincoNumeros
+
 \author{Martha Paola Jiménez Martínez}
 \title{Análisis Explotario de Datos en Isla Isabel}
 
@@ -14,4 +20,19 @@
 \label{tab:csvResumenCincoNumeros}
 \csvautotabular{tables/resumen_cinco_numero_serpientes.csv}
 \end{table}
+
+\begin{table}[H]
+   \centering
+   \caption{Ejemplo contenido de tabla}
+    \begin{scriptsize}
+    \pgfplotstabletypeset[
+      string type,
+      assign column name/.style={/pgfplots/table/column name={\textbf{#1}}},
+     every head row/.style={before row=\toprule,after row=\midrule},
+     every last row/.style={after row=\bottomrule},
+     ]{\ResumenCincoNumeros}
+    \end{scriptsize}
+   \label{tab:ResumenCincoNumeros}
+ \end{table}
+
 \end{document}
