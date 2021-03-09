@@ -3,7 +3,8 @@
 import numpy as np
 import pandas as pd
 s = pd.read_csv('data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv') 
-s = s.rename(columns={"Longitud_total": "Longitud total", "Longitud_hocico_cola": "Longitud hocico cola", "Longitud_cloaca_cola": "Longitud cloaca cola", "Masa_del_individuo": "Masa del individuo"})
+s = s.rename(columns={"Longitud_total": "Longitud total", "Longitud_hocico_cola": "Longitud hocico cola", "Longitud_cloaca_cola": "Longitud cloaca cola", "Masa_del_individuo": "Masa"})
 s = s.describe()
-s = s.rename(index={"25%": "Q1", "50%": "Q2", "75%": "Q3"})
-s.to_csv('reports/tables/resumen_cinco_numero_serpientes.csv')
+s = s.rename(index={"25%": "$Q_1$", "50%": "$Q_2$", "75%": "$Q_3$"})
+s = s.rename_axis("Estadistico")
+s.drop(columns=["Temporada", "Latitud", "Longitud"]).round(decimals=2).to_csv('reports/tables/resumen_cinco_numero_serpientes.csv')
