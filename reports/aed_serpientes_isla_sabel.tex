@@ -24,14 +24,15 @@
 \begin{table}[H]
    \centering
    \caption{Ejemplo contenido de tabla}
-    \begin{scriptsize}
     \pgfplotstabletypeset[
       string type,
       assign column name/.style={/pgfplots/table/column name={\textbf{#1}}},
-     every head row/.style={before row=\toprule,after row=\midrule},
-     every last row/.style={after row=\bottomrule},
+        every head row/.style={before row={\toprule
+          & \multicolumn{3}{c}{\textbf{Longitudes (cm)}} & \multicolumn{3}{c}{}\\
+          }, after row=\midrule},
+          every last row/.style={after row=\bottomrule
+        },
      ]{\ResumenCincoNumeros}
-    \end{scriptsize}
    \label{tab:ResumenCincoNumeros}
  \end{table}
 
