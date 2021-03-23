@@ -42,3 +42,5 @@ $(csvResumenCincoNumerosSerpientes): $(csvMonitoreoSerpientesIslaIsabel) src/cal
 clean:
 	cd reports && ls | egrep --invert-match "*.tex|*.md|*.bib" | xargs --delimiter="\n" rm --recursive --force
 	rm --recursive --force data
+	rm --recursive --force tests/__pycache__
+	rm --recursive --force mi_modulo/__pycache__
