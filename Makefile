@@ -44,3 +44,13 @@ clean:
 	rm --recursive --force data
 	rm --recursive --force tests/__pycache__
 	rm --recursive --force mi_modulo/__pycache__
+	
+format:
+	black --line-length 100 mi_modulo
+	black --line-length 100 tests
+
+mutants:
+	mutmut run --paths-to-mutate mi_modulo
+
+tests: install
+	pytest --verbose
