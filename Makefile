@@ -21,6 +21,8 @@ csvResumenCincoNumerosSerpientes = \
 
 reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes)
 	cd $(<D) && pdflatex $(<F)
+	cd $(<D) && bibtex herramientas
+	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pdflatex $(<F)
 
 # 2.IV Reglas para construir las dependencias de los objetivos principales
@@ -39,6 +41,7 @@ $(csvResumenCincoNumerosSerpientes): $(csvMonitoreoSerpientesIslaIsabel) src/cal
 # =================================
 # Borrar datos y PDFs
 .PHONY: all clean
+
 clean:
 	cd reports && ls | egrep --invert-match "*.tex|*.md|*.bib" | xargs --delimiter="\n" rm --recursive --force
 	rm --recursive --force data
