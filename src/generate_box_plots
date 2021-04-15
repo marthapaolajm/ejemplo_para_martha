@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+# generate_box_plots Calcula diagrama de cajas de datos de serpientes Isla Isabel.
+import numpy as np
+import matplotlib.pyplot as plt  # graficador
+
+data_numpy = np.genfromtxt(
+    "data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv", delimiter=","
+)
+
+seasons = np.unique(data_numpy[:, 1])
+seasons = np.sort(seasons[~np.isnan(seasons)])
+boxsplotdata = []
+for i in seasons:
+    mask = np.where(data_numpy == i)[0]
+    total_length = data_numpy[mask][:, 3]
+    total_length = total_length[~np.isnan(total_length)]
+    if total_length.size == 0:
+        continue
+    else:
+        boxsplotdata.append(total_length)
+    print(i)
+print(boxsplotdata)
+
+plt.figure(figsize=(5, 5))  # Aumento de tamaño grafica
+plt.boxplot(boxsplotdata)
+plt.savefig("reports/figures/diagrama_cajas_serpientes_isabel.png", transparent=True, dpi=300)
