@@ -23,4 +23,5 @@ print(boxsplotdata)
 
 plt.figure(figsize=(5, 5))  # Aumento de tamaño grafica
 plt.boxplot(boxsplotdata)
+plt.xticks([1,2,3,4], ['2008', '2009', '2010', '2011'], size = 'small', color = 'k') # Colocamos las etiquetas para cada distribución
 plt.savefig("reports/figures/diagrama_cajas_serpientes_isabel.png", transparent=True, dpi=300)
