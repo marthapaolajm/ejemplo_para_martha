@@ -15,13 +15,14 @@ csvMonitoreoSerpientesIslaIsabel = \
 csvResumenCincoNumerosSerpientes = \
 	reports/tables/resumen_cinco_numero_serpientes.csv
 
+pngDiagramaCajasSerpientesIsabel = \
+	reports/figures/diagrama_cajas_serpientes_isabel.png
+
 # 2.III Reglas para construir los objetivos principales
 # ====================================================
 # Generar PDFs de reportes
 
-reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes)
-	cd $(<D) && pdflatex $(<F)
-	cd $(<D) && bibtex herramientas
+reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes) $(pngDiagramaCajasSerpientesIsabel)
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pdflatex $(<F)
 
@@ -35,7 +36,11 @@ $(csvMonitoreoSerpientesIslaIsabel):
 	
 $(csvResumenCincoNumerosSerpientes): $(csvMonitoreoSerpientesIslaIsabel) src/calculate_eda_snakes
 	$(checkDirectories)
-	src/calculate_eda_snakes
+	src/calculate_eda_snakes 
+
+$(pngDiagramaCajasSerpientesIsabel): $(csvMonitoreoSerpientesIslaIsabel) src/generate_box_plots
+	$(checkDirectories)
+	src/generate_box_plots
 
 # V Reglas del resto de los phonys
 # =================================
@@ -51,6 +56,7 @@ clean:
 format:
 	black --line-length 100 mi_modulo
 	black --line-length 100 tests
+	black --line-length 100 src/*
 
 mutants:
 	mutmut run --paths-to-mutate mi_modulo
