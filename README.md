@@ -3,7 +3,13 @@
 ## Descripción
 
 Este repositorio fue creado con el fin de documentar mi proyecto de vinculación con valor en créditos (PVVC) durante la estancia en el Grupo de Ecología y Conservación de Islas (GECI).
-En el primer reporte de este repositorio "nuestras herramientas" se describen las herramientas que usamos en el equipo de ciencia de datos, como: Git, GitHub, Git Kraken, Phyton, etc.
+En donde se encuentran dos reportes:
+
+### Herramientas para Ciencia de Datos.
+Se describen las herramientas utilizadas en el equipo de ciencias de datos, así también, se exponen algunos procedimientos que se llevan a cabo y se explica la utilización de varias cuentas que son utilizadas por el equipo.
+
+### Análisis Exploratorio de Datos en Isla Isabel
+Se exponen los datos capturados del monitorio de serpiente falsa coralillo de Isla Isabel en la temporada 2008 a 2014. Mediante los cuales se describirán estos datos, mediante un resumen de cinco números y un diagrama de cajas.
 
 ## Tecnologías usadas
 
