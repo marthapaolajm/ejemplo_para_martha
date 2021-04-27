@@ -4,6 +4,7 @@
 \usepackage{booktabs}
 \usepackage{pgfplotstable}
 \usepackage{pythontex}
+\usepackage{hyperref}
 \usepackage[a4paper,top=1cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry} 
 \pgfplotstableread[col sep=comma]{tables/resumen_cinco_numero_serpientes.csv}\ResumenCincoNumeros
 
@@ -21,9 +22,11 @@ metadata_writer.load_metadata(datapackage)
 \end{pycode}
 
 \begin{document} 
-\section{Datos}
+\maketitle
 
-\py{metadata_writer.write_title_with_link()}
+
+\section{Datos}
+Usamos la \py{metadata_writer.write_title_with_link()}
 \py{metadata_writer.description()}
 
 El análisis exploratorio de datos en Isla Isabel de la serpiente falsa coralillo (2008-2014).
@@ -39,7 +42,28 @@ El diagrama de cajas nos sirve para visualizar los datos atípicos. Cada caja es
 \centering
 \caption{Boxsplot}
 \label{fig:pngBoxsplotLongitudTotal}
-\includegraphics{figures/diagrama_cajas_serpientes_isabel.png}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_cloaca_cola_serpientes_isabel.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\caption{Boxsplot}
+\label{fig:pngBoxsplotLongitudTotal}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_hocico_cola_serpientes_isabel.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\caption{Boxsplot}
+\label{fig:pngBoxsplotLongitudTotal}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_total_serpientes_isabel.png}
+\end{figure}
+
+\begin{figure}
+\centering
+\caption{Boxsplot}
+\label{fig:pngBoxsplotLongitudTotal}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Masa_del_individuo_serpientes_isabel.png}
 \end{figure}
 
 \begin{table}[H]
