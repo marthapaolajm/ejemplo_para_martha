@@ -1,6 +1,7 @@
 # I Definición del _phony_ *all* que enlista todos los objetivos principales
 # ==========================================================================
 all: reports/aed_serpientes_isla_sabel.pdf
+	 reports/herramientas.pdf
 
 define checkDirectories
     mkdir --parents $(@D)
@@ -15,14 +16,17 @@ csvMonitoreoSerpientesIslaIsabel = \
 csvResumenCincoNumerosSerpientes = \
 	reports/tables/resumen_cinco_numero_serpientes.csv
 
-pngDiagramaCajasSerpientesIsabel = \
-	reports/figures/diagrama_cajas_serpientes_isabel.png
+pngDiagramasDeCajasSerpientesIsabel = \
+	reports/figures/diagrama_cajas_Longitud_cloaca_cola_serpientes_isabel.png \
+	reports/figures/diagrama_cajas_Longitud_hocico_cola_serpientes_isabel.png \
+	reports/figures/diagrama_cajas_Longitud_total_serpientes_isabel.png \
+	reports/figures/diagrama_cajas_Masa_del_individuo_serpientes_isabel.png
 
 # 2.III Reglas para construir los objetivos principales
 # ====================================================
 # Generar PDFs de reportes
 
-reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes) $(pngDiagramaCajasSerpientesIsabel)
+reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes) $(pngDiagramasDeCajasSerpientesIsabel)
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pythontex $(<F)
 	cd $(<D) && pdflatex $(<F)
@@ -40,7 +44,7 @@ $(csvResumenCincoNumerosSerpientes): $(csvMonitoreoSerpientesIslaIsabel) src/cal
 	$(checkDirectories)
 	src/calculate_eda_snakes 
 
-$(pngDiagramaCajasSerpientesIsabel): $(csvMonitoreoSerpientesIslaIsabel) src/generate_box_plots
+$(pngDiagramasDeCajasSerpientesIsabel): $(csvMonitoreoSerpientesIslaIsabel) src/generate_box_plots
 	$(checkDirectories)
 	src/generate_box_plots
 
@@ -54,6 +58,7 @@ clean:
 	rm --recursive --force data
 	rm --recursive --force tests/__pycache__
 	rm --recursive --force mi_modulo/__pycache__
+	rm --recursive --force reports/pythontex-files-aed_serpientes_isla_sabel
 	
 format:
 	black --line-length 100 mi_modulo
