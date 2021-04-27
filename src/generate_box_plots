@@ -1,27 +1,46 @@
 #!/usr/bin/env python
 # generate_box_plots Calcula diagrama de cajas de datos de serpientes Isla Isabel.
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt  # graficador
+from geci_plots import *
 
-data_numpy = np.genfromtxt(
-    "data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv", delimiter=","
+def set_axis_labels(ax,variable):
+    if variable == "Masa_del_individuo":
+        ax.set_ylabel(f'{variable.replace("_"," ")} (gr)', fontsize=25, labelpad=10)
+    else:
+        ax.set_ylabel(f'{variable.replace("_"," ")} (cm)', fontsize=25, labelpad=10)
+    ax.set_xlabel("Temporadas", fontsize=25, labelpad=10)
+
+data_pandas = pd.read_csv(
+    "data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv",
 )
 
-seasons = np.unique(data_numpy[:, 1])
-seasons = np.sort(seasons[~np.isnan(seasons)])
-boxsplotdata = []
-for i in seasons:
-    mask = np.where(data_numpy == i)[0]
-    total_length = data_numpy[mask][:, 3]
-    total_length = total_length[~np.isnan(total_length)]
-    if total_length.size == 0:
-        continue
-    else:
+lista_de_variables = ['Longitud_total','Longitud_hocico_cola', 'Longitud_cloaca_cola', 'Masa_del_individuo', 'Bandas']
+for feature in lista_de_variables:
+    boxsplotdata = []
+    data_feature = data_pandas[["Temporada", feature]].dropna()
+    seasons = data_feature["Temporada"].unique()
+    for i in seasons:
+        mask = data_feature["Temporada"]==i
+        total_length = data_feature[mask][feature]
         boxsplotdata.append(total_length)
-    print(i)
-print(boxsplotdata)
+        print(i)
+    print(boxsplotdata)
 
-plt.figure(figsize=(5, 5))  # Aumento de tamaño grafica
-plt.boxplot(boxsplotdata)
-plt.xticks([1,2,3,4], ['2008', '2009', '2010', '2011'], size = 'small', color = 'k') # Colocamos las etiquetas para cada distribución
-plt.savefig("reports/figures/diagrama_cajas_serpientes_isabel.png", transparent=True, dpi=300)
+    fig, ax = geci_plot()
+    ax.boxplot(boxsplotdata)
+    ticks_positions = ticks_positions_array(seasons)
+
+    upper_limit = roundup(np.max(data_pandas[feature]), 10)
+    plt.ylim(0,upper_limit)
+    rounded_ticks = rounded_ticks_array(upper_limit, 0)
+    plt.yticks(rounded_ticks, size=20)
+    ax.tick_params(axis="y", labelsize=20, labelrotation=90)
+    ax.tick_params(axis="x", labelsize=20)
+
+    plt.xticks(ticks_positions, seasons, size = 20, color = 'k') 
+
+    set_axis_labels(ax,feature)
+    
+    plt.savefig(f"reports/figures/diagrama_cajas_{feature}_serpientes_isabel.png", transparent=True, dpi=300)
