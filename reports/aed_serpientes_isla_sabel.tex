@@ -3,14 +3,29 @@
 \usepackage{float}
 \usepackage{booktabs}
 \usepackage{pgfplotstable}
+\usepackage{pythontex}
 \usepackage[a4paper,top=1cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry} 
 \pgfplotstableread[col sep=comma]{tables/resumen_cinco_numero_serpientes.csv}\ResumenCincoNumeros
 
 \author{Martha Paola Jiménez Martínez}
 \title{Análisis Exploratorio de Datos en Isla Isabel}
 
+\begin{pycode}
+import pythontex_tools as ptt
+
+datapackage = '../data/raw/datapackage.json'
+
+metadata_writer = ptt.Writer_Metadata()
+metadata_writer.load_metadata(datapackage)
+
+\end{pycode}
+
 \begin{document} 
 \section{Datos}
+
+\py{metadata_writer.write_title_with_link()}
+\py{metadata_writer.description()}
+
 El análisis exploratorio de datos en Isla Isabel de la serpiente falsa coralillo (2008-2014).
 Incluye la disponibilidad de datos; el cual es representado mediante una tabla que contiene el
 nombre de la categoría, desviación estándar, resumen de cinco números, promedio y cifra de datos.
