@@ -24,6 +24,8 @@ pngDiagramaCajasSerpientesIsabel = \
 
 reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes) $(pngDiagramaCajasSerpientesIsabel)
 	cd $(<D) && pdflatex $(<F)
+	cd $(<D) && pythontex $(<F)
+	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pdflatex $(<F)
 
 # 2.IV Reglas para construir las dependencias de los objetivos principales
