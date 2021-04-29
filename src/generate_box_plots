@@ -3,38 +3,39 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt  # graficador
-from geci_plots import *
+from geci_plots import *  
 
 def set_axis_labels(ax,variable):
-    if variable == "Masa_del_individuo":
+    ax.set_xlabel("Temporadas", fontsize=25, labelpad=10)
+    if variable == "Masa_del_individuo":     
         ax.set_ylabel(f'{variable.replace("_"," ")} (gr)', fontsize=25, labelpad=10)
+    
     else:
         ax.set_ylabel(f'{variable.replace("_"," ")} (cm)', fontsize=25, labelpad=10)
-    ax.set_xlabel("Temporadas", fontsize=25, labelpad=10)
-
+    
 data_pandas = pd.read_csv(
     "data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv",
 )
 
-lista_de_variables = ['Longitud_total','Longitud_hocico_cola', 'Longitud_cloaca_cola', 'Masa_del_individuo', 'Bandas']
-for feature in lista_de_variables:
+lista_de_variables = ['Longitud_total','Longitud_hocico_cola', 'Longitud_cloaca_cola', 'Masa_del_individuo'] 
+for feature in lista_de_variables:  
     boxsplotdata = []
-    data_feature = data_pandas[["Temporada", feature]].dropna()
-    seasons = data_feature["Temporada"].unique()
+    data_feature = data_pandas[["Temporada", feature]].dropna()  
+    seasons = data_feature["Temporada"].unique() 
     for i in seasons:
-        mask = data_feature["Temporada"]==i
-        total_length = data_feature[mask][feature]
-        boxsplotdata.append(total_length)
+        mask = data_feature["Temporada"]==i 
+        data_feature_per_season = data_feature[mask][feature] 
+        boxsplotdata.append(data_feature_per_season) 
         print(i)
     print(boxsplotdata)
 
-    fig, ax = geci_plot()
+    fig, ax = geci_plot()  #graf + grande y se remueva barras
     ax.boxplot(boxsplotdata)
     ticks_positions = ticks_positions_array(seasons)
 
-    upper_limit = roundup(np.max(data_pandas[feature]), 10)
-    plt.ylim(0,upper_limit)
-    rounded_ticks = rounded_ticks_array(upper_limit, 0)
+    upper_limit = roundup(np.max(data_pandas[feature]), 10) 
+    plt.ylim(0,upper_limit)  
+    rounded_ticks = rounded_ticks_array(upper_limit, 0)  
     plt.yticks(rounded_ticks, size=20)
     ax.tick_params(axis="y", labelsize=20, labelrotation=90)
     ax.tick_params(axis="x", labelsize=20)
@@ -43,4 +44,4 @@ for feature in lista_de_variables:
 
     set_axis_labels(ax,feature)
     
-    plt.savefig(f"reports/figures/diagrama_cajas_{feature}_serpientes_isabel.png", transparent=True, dpi=300)
+    plt.savefig(f"reports/figures/diagrama_cajas_{feature}_serpientes_isabel.png", transparent=True, dpi=300)  
