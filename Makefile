@@ -1,6 +1,6 @@
 # I Definición del _phony_ *all* que enlista todos los objetivos principales
 # ==========================================================================
-all: reports/aed_serpientes_isla_sabel.pdf
+all: reports/aed_serpientes_isla_sabel.pdf \
 	 reports/herramientas.pdf
 
 define checkDirectories
@@ -25,6 +25,12 @@ pngDiagramasDeCajasSerpientesIsabel = \
 # 2.III Reglas para construir los objetivos principales
 # ====================================================
 # Generar PDFs de reportes
+
+reports/herramientas.pdf: reports/herramientas.tex 
+	cd $(<D) && pdflatex $(<F) 
+	cd $(<D) && bibtex herramientas
+	cd $(<D) && pdflatex $(<F)
+	cd $(<D) && pdflatex $(<F)
 
 reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes) $(pngDiagramasDeCajasSerpientesIsabel)
 	cd $(<D) && pdflatex $(<F)
