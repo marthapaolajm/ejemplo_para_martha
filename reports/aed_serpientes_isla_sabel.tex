@@ -5,11 +5,19 @@
 \usepackage{pgfplotstable}
 \usepackage{pythontex}
 \usepackage{hyperref}
+\usepackage[spanish,es-tabla,es-nodecimaldot]{babel}
 \usepackage[a4paper,top=1cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry} 
 \pgfplotstableread[col sep=comma]{tables/resumen_cinco_numero_serpientes.csv}\ResumenCincoNumeros
 
 \author{Martha Paola Jiménez Martínez}
 \title{Análisis Exploratorio de Datos en Isla Isabel}
+%%\small{martha.jimenez@islas.org.mx}
+
+%% \begin{abstract}
+%% Se realizó un análisis exploratorio de datos, con los datos capturado de serpiente falsa coralillo
+%% en Isla Isabel en el periodo de 2008 al 2014. Formado por un resumen de cinco números, presentado
+%% por diagrama de cajas de medidas morfometricas.
+%% \end{abstract}
 
 \begin{pycode}
 import pythontex_tools as ptt
@@ -25,22 +33,34 @@ metadata_writer.load_metadata(datapackage)
 \maketitle
 
 
-\section{Datos}
+\section*{Datos}
 Usamos la \py{metadata_writer.write_title_with_link()}
 \py{metadata_writer.description()}
 
-El análisis exploratorio de datos en Isla Isabel de la serpiente falsa coralillo (2008-2014).
-Incluye la disponibilidad de datos; el cual es representado mediante una tabla que contiene el
-nombre de la categoría, desviación estándar, resumen de cinco números, promedio y cifra de datos.
-Así también, contiene una visualización de resumen; escenificado por un diagrama de cajas.
+\section*{Análisis Exploratorio de Datos}
+El análisis exploratorio de datos de serpiente falsa coralillo en Isla Isabel en el periodo de 2008
+al 2014. Incluimos la disponibilidad de datos; la cual esta representada mediante la tabla
+\ref{tab:ResumenCincoNumeros} que contiene: cantidad de datos, resumen de cinco números y promedio.
 
-\section{Análisis Exploratorio de Datos}
-El resumen de cinco números está constituido por: la desviación estándar, el mínimo, máximo y los cuartiles uno, dos y tres. Donde el cuartil uno $(Q_1)$ representa el 25\%, el cuartil dos $(Q_2)$ representa el 50\% y el cuartil tres $(Q_3)$ representa el 75\% de los datos. 
-El diagrama de cajas nos sirve para visualizar los datos atípicos. Cada caja está delimitada por $(Q_1)$ y $(Q_3)$, donde la línea en el centro de las caja; es la mediana $(Q_1)$. Y los puntos fuera de los diagramas de cajas, son los datos atípicos.
+El resumen de cinco números está constituido por: la desviación estándar ($\sigma$), el mínimo,
+máximo y los cuartiles uno, dos y tres. Dado el conjunto
+($\delta$), el cual contiene todos los registros de la base de datos ordenados de menor a mayor
+calculamos el cuartil uno $(Q_1)$ que representa el 25\% del conjunto, el cuartil
+dos $(Q_2)$ representa el 50\% o la mediana y el cuartil tres $(Q_3)$ representa el 75\%.
+Para complementar, mostramos una visualización del resumen; escenificado por un diagrama de cajas. 
+El diagrama de cajas nos sirve para visualizar los estadisticos de la tabla
+\ref{tab:ResumenCincoNumeros} y los datos atípicos. Cada caja está delimitada por $(Q_1)$ y $(Q_3)$,
+donde la línea naranja de las cajas; es la mediana $(Q_2)$. Y los puntos fuera de los diagramas
+de cajas, son los datos atípicos.
+
+
 
 \begin{table}[H]
    \centering
-   \caption{Resumen de cinco números}
+\caption{Resumen de cinco números de medidas morfometricas de serpiente falsa coralillo en Isla
+Isabel con datos del 2008 a 2014. Donde $N_{\delta}$ es la canidad de registros, $\bar{\delta}$ es el
+promedio, $\sigma$ es la desviacion estandar, $min$ es el minimo, $max$ es el maximo y $Q_1$, $Q_2$
+y $Q_3$ son los cuartines uno, dos y tres respectivamente.}
     \pgfplotstabletypeset[
       string type,
       assign column name/.style={/pgfplots/table/column name={\textbf{#1}}},
@@ -53,41 +73,57 @@ El diagrama de cajas nos sirve para visualizar los datos atípicos. Cada caja es
    \label{tab:ResumenCincoNumeros}
  \end{table}
 
-\section{Resultados}
+\section*{Resultados}
 
-En la Figura 1 podemos observar las alteraciones por temporada de la longitud cloaca cola.
+\subsection*{Longitud cloaca cola}
+En la Figura \ref{fig:pngBoxsplotLongitudCloacaCola} podemos observar un diagrama de cajas por
+temporada de la longitud cloaca cola, de los individuos de falsa coralillo capturados en la Isla
+Isabel con datos del 2008 a 2014. Comparando los diagramas de las siete temporadas, no se observa
+mucha variacion en la mediana.
 
 \begin{figure}[H]
 \centering
-\caption{Las temporadas 2008, 2009 y 2013 tienen un dato atípico cada uno y en el 2014 no hay cuartil tres.}
-\label{fig:pngBoxsplotLongitudTotal}
+\caption{Diagrama de cajas por temporada de la longitud cloaca cola, de los individuos de falsa coralillo capturados en la Isla Isabel con datos del 2008 a 2014. Las temporadas 2008, 2009 y 2013 obtuvieron un dato atípico cada uno.}
+\label{fig:pngBoxsplotLongitudCloacaCola}
 \includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_cloaca_cola_serpientes_isabel.png}
 \end{figure}
 
-En la Figura 2 podemos observar las alteraciones por temporada de la longitud hocico cola.
+\subsection*{Longitud hocico cola}
+En la Figura \ref{fig:pngBoxsplotLongitudHocicoCola} podemos observar un diagrama de cajas por
+temporada de la longitud hocico cola, de los individuos de falsa coralillo capturados en la Isla
+Isabel con datos del 2008 a 2014. Comparando los diagramas de las siete temporadas, se observa  que
+las mediana son consistente.
 
 \begin{figure}[H]
 \centering
-\caption{De las temporadas 2008 y 2009 se tienen diversos datos atípicos y en el 2011 se aprecia que su mediana, es más cercana al cuartil tres que las demás temporadas.}
-\label{fig:pngBoxsplotLongitudTotal}
+\caption{Diagrama de cajas por temporada de la longitud hocico cola, de los individuos de falsa coralillo capturados en la Isla Isabel con datos del 2008 a 2014. De las temporadas 2008 y 2009 se tienen diversos datos atípicos y en el 2011 se aprecia que su mediana, es más cercana al cuartil tres que las demás temporadas.}
+\label{fig:pngBoxsplotLongitudHocicoCola}
 \includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_hocico_cola_serpientes_isabel.png}
 \end{figure}
 
-En la Figura 3 podemos observar las alteraciones por temporada de la longitud total.
+\subsection*{Longitud total}
+En la Figura \ref{fig:pngBoxsplotLongitudTotal} podemos observar un diagrama de cajas por
+temporada de la longitud total, de los individuos de falsa coralillo capturados en la Isla
+Isabel con datos del 2008 a 2011. Comparando los diagramas de las cuatro temporadas, se observa  que
+la variacion de las medianas es consistente.
 
 \begin{figure}[H]
 \centering
-\caption{En las temporadas 2008 y 2009 se obtienen datos atípicos, así también en 2008 y 2011 ambas medianas con más cercanas al cuartil tres.}
+\caption{Diagrama de cajas por temporada de la longitud total, de los individuos de falsa coralillo capturados en la Isla Isabel con datos del 2008 a 2011. En las temporadas 2008 y 2009 se obtienen datos atípicos, así también en 2008 y 2011 ambas medianas con más cercanas al cuartil tres.}
 \label{fig:pngBoxsplotLongitudTotal}
 \includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_total_serpientes_isabel.png}
 \end{figure}
 
-En la Figura 4 podemos observar las alteraciones por temporada de la masa del individuo.
+\subsection*{Masa}
+En la Figura \ref{fig:pngBoxsplotMasa} podemos observar un diagrama de cajas por
+temporada de la masa, de los individuos de falsa coralillo capturados en la Isla
+Isabel con datos del 2008 a 2014. Comparando los diagramas de las siete temporadas, se observa  que
+la variacion de las medianas no es consistente.
 
 \begin{figure}[H]
 \centering
-\caption{En las temporadas 2008 y 2013 se conservan datos atípicos, sin embargo también se puede observar que en 2013 no hay un máximo en los datos.}
-\label{fig:pngBoxsplotLongitudTotal}
+\caption{Diagrama de cajas por temporada de la masa, de los individuos de falsa coralillo capturados en la Isla Isabel con datos del 2008 a 2014. En las temporadas 2008 y 2013 se conservan datos atípicos.}
+\label{fig:pngBoxsplotMasa}
 \includegraphics[scale=0.4]{figures/diagrama_cajas_Masa_del_individuo_serpientes_isabel.png}
 \end{figure}
 
