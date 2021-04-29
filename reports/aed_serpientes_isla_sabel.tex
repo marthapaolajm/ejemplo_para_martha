@@ -38,37 +38,9 @@ Así también, contiene una visualización de resumen; escenificado por un diagr
 El resumen de cinco números está constituido por: la desviación estándar, el mínimo, máximo y los cuartiles uno, dos y tres. Donde el cuartil uno $(Q_1)$ representa el 25\%, el cuartil dos $(Q_2)$ representa el 50\% y el cuartil tres $(Q_3)$ representa el 75\% de los datos. 
 El diagrama de cajas nos sirve para visualizar los datos atípicos. Cada caja está delimitada por $(Q_1)$ y $(Q_3)$, donde la línea en el centro de las caja; es la mediana $(Q_1)$. Y los puntos fuera de los diagramas de cajas, son los datos atípicos.
 
-\begin{figure}
-\centering
-\caption{Boxsplot}
-\label{fig:pngBoxsplotLongitudTotal}
-\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_cloaca_cola_serpientes_isabel.png}
-\end{figure}
-
-\begin{figure}
-\centering
-\caption{Boxsplot}
-\label{fig:pngBoxsplotLongitudTotal}
-\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_hocico_cola_serpientes_isabel.png}
-\end{figure}
-
-\begin{figure}
-\centering
-\caption{Boxsplot}
-\label{fig:pngBoxsplotLongitudTotal}
-\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_total_serpientes_isabel.png}
-\end{figure}
-
-\begin{figure}
-\centering
-\caption{Boxsplot}
-\label{fig:pngBoxsplotLongitudTotal}
-\includegraphics[scale=0.4]{figures/diagrama_cajas_Masa_del_individuo_serpientes_isabel.png}
-\end{figure}
-
 \begin{table}[H]
    \centering
-   \caption{Ejemplo contenido de tabla}
+   \caption{Resumen de cinco números}
     \pgfplotstabletypeset[
       string type,
       assign column name/.style={/pgfplots/table/column name={\textbf{#1}}},
@@ -80,5 +52,43 @@ El diagrama de cajas nos sirve para visualizar los datos atípicos. Cada caja es
      ]{\ResumenCincoNumeros}
    \label{tab:ResumenCincoNumeros}
  \end{table}
+
+\section{Resultados}
+
+En la Figura 1 podemos observar las alteraciones por temporada de la longitud cloaca cola.
+
+\begin{figure}[H]
+\centering
+\caption{Las temporadas 2008, 2009 y 2013 tienen un dato atípico cada uno y en el 2014 no hay cuartil tres.}
+\label{fig:pngBoxsplotLongitudTotal}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_cloaca_cola_serpientes_isabel.png}
+\end{figure}
+
+En la Figura 2 podemos observar las alteraciones por temporada de la longitud hocico cola.
+
+\begin{figure}[H]
+\centering
+\caption{De las temporadas 2008 y 2009 se tienen diversos datos atípicos y en el 2011 se aprecia que su mediana, es más cercana al cuartil tres que las demás temporadas.}
+\label{fig:pngBoxsplotLongitudTotal}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_hocico_cola_serpientes_isabel.png}
+\end{figure}
+
+En la Figura 3 podemos observar las alteraciones por temporada de la longitud total.
+
+\begin{figure}[H]
+\centering
+\caption{En las temporadas 2008 y 2009 se obtienen datos atípicos, así también en 2008 y 2011 ambas medianas con más cercanas al cuartil tres.}
+\label{fig:pngBoxsplotLongitudTotal}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Longitud_total_serpientes_isabel.png}
+\end{figure}
+
+En la Figura 4 podemos observar las alteraciones por temporada de la masa del individuo.
+
+\begin{figure}[H]
+\centering
+\caption{En las temporadas 2008 y 2013 se conservan datos atípicos, sin embargo también se puede observar que en 2013 no hay un máximo en los datos.}
+\label{fig:pngBoxsplotLongitudTotal}
+\includegraphics[scale=0.4]{figures/diagrama_cajas_Masa_del_individuo_serpientes_isabel.png}
+\end{figure}
 
 \end{document}
