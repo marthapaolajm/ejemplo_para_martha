@@ -13,9 +13,6 @@ summary_five_numbers = summary_five_numbers.rename(
         "Elevacion": "Elevacion",
     }
 )
-summary_five_numbers = summary_five_numbers.describe()
-summary_five_numbers = summary_five_numbers.rename(index={"count": "$N_{{\delta}}$", "mean": "$\\bar{{\delta}}$", "std": "$\sigma$", "25%": "$Q_1$", "50%": "$Q_2$", "75%": "$Q_3$"})
-summary_five_numbers = summary_five_numbers.rename_axis("Estadistico") 
-summary_five_numbers.drop(columns=["Temporada", "Latitud", "Longitud"]).round(decimals=2).to_csv(
-    "reports/tables/resumen_cinco_numero_serpientes.csv"
-)
+summary_five_numbers = summary_five_numbers.describe().T
+summary_five_numbers = summary_five_numbers.rename_axis("Variable") 
+summary_five_numbers.round(decimals=2).to_csv("reports/tables/resumen_cinco_numero_serpientes.csv")
