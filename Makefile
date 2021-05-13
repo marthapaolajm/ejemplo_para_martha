@@ -1,6 +1,6 @@
 # I Definición del _phony_ *all* que enlista todos los objetivos principales
 # ==========================================================================
-all: reports/aed_serpientes_isla_sabel.pdf \
+all: reports/aed_serpientes_isla_isabel.pdf \
 	 reports/herramientas.pdf
 
 define checkDirectories
@@ -32,7 +32,7 @@ reports/herramientas.pdf: reports/herramientas.tex
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pdflatex $(<F)
 
-reports/aed_serpientes_isla_sabel.pdf: reports/aed_serpientes_isla_sabel.tex $(csvResumenCincoNumerosSerpientes) $(pngDiagramasDeCajasSerpientesIsabel)
+reports/aed_serpientes_isla_isabel.pdf: reports/aed_serpientes_isla_isabel.tex $(csvResumenCincoNumerosSerpientes) $(pngDiagramasDeCajasSerpientesIsabel)
 	cd $(<D) && pdflatex $(<F)
 	cd $(<D) && pythontex $(<F)
 	cd $(<D) && pdflatex $(<F)
@@ -50,21 +50,21 @@ $(csvResumenCincoNumerosSerpientes): $(csvMonitoreoSerpientesIslaIsabel) src/cal
 	$(checkDirectories)
 	src/calculate_eda_snakes 
 
-$(pngDiagramasDeCajasSerpientesIsabel): $(csvMonitoreoSerpientesIslaIsabel) src/generate_box_plots
+$(pngDiagramasDeCajasSerpientesIsabel): $(csvMonitoreoSerpientesIslaIsabel) src/generate_box_plots.py
 	$(checkDirectories)
-	src/generate_box_plots
+	python -m src.generate_box_plots
 
 # V Reglas del resto de los phonys
 # =================================
 # Borrar datos y PDFs
-.PHONY: all clean
+.PHONY: all clean format mutants tests
 
 clean:
 	cd reports && ls | egrep --invert-match "*.tex|*.md|*.bib" | xargs --delimiter="\n" rm --recursive --force
 	rm --recursive --force data
 	rm --recursive --force tests/__pycache__
 	rm --recursive --force mi_modulo/__pycache__
-	rm --recursive --force reports/pythontex-files-aed_serpientes_isla_sabel
+	rm --recursive --force reports/pythontex-files-aed_serpientes_isla_isabel
 	
 format:
 	black --line-length 100 mi_modulo
@@ -74,5 +74,5 @@ format:
 mutants:
 	mutmut run --paths-to-mutate mi_modulo
 
-tests: install
+tests:
 	pytest --verbose
