@@ -8,15 +8,12 @@
       "scripts": [],
       "data": [],
       "requirements": []
-    }
-  ]
-
-  [
+    },
     {
       "docker_parent_image": "islasgeci/base:13fe",
       "name": "Analisis exploratorio de datos en Isla Isabel",
       "description": "Realizamos un resumen de cinco numero y diagramas de caja para cada categoria",
-      "report": "aed_serpientes_isla_sabel.pdf",
+      "report": "aed_serpientes_isla_isabel.pdf",
       "results": [
         "csvresumen_cinco_numero_serpientes.csv",
         "pngdiagrama_cajas_Longitud_cloaca_cola_serpientes_isabel.png",
