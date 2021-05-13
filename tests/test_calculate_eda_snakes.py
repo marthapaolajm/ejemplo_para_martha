@@ -1,5 +1,6 @@
 from mi_modulo import *
 import numpy as np
+import pandas as pd
 
 def test_nothing():
     pass
