@@ -64,6 +64,7 @@ clean:
 	rm --recursive --force data
 	rm --recursive --force tests/__pycache__
 	rm --recursive --force mi_modulo/__pycache__
+	rm --recursive --force src/__pycache__
 	rm --recursive --force reports/pythontex-files-aed_serpientes_isla_isabel
 	
 format:
