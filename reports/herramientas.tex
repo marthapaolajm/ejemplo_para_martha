@@ -1,0 +1,150 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\thispagestyle{empty}
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\textbf{Tarea 1: Herramientas para Ciencia de Datos.}} \author{Martha Paola Jiménez Martínez
+\\
+\small{martha.jimenez@islas.org.mx}}
+\date{ \small{Asignatura: PVVC 2021-1}
+} 
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Introducción}
+La ciencia de datos explora datos para obtener conocimiento de ellos; lo que implica saber
+programación, estadística y comunicación. Para poder aplicar estos conocimientos es esencial el
+dominio de diversas plataformas. Mostraremos algunas a continuación con su significado y su
+utilidad, así como algunos conceptos que forman parte de las herramientas necesarias en ciencia de
+datos.
+
+\section*{Herramientas}
+\subsection*{Git}
+Git es una herramienta que realiza una función del control de versiones de código de forma
+distribuida, y no depende de un repositorio central. Este funciona con ramas las cuales están
+destinadas a provocar proyectos divergentes de un proyecto principal, para hacer experimentos o para
+probar nuevas funcionalidades.
+\citep{rubio_2020}
+Sirve para que la copia de trabajo del código de cada desarrollador sea también un repositorio que
+puede albergar el historial completo de todos los cambios.
+\citep{bitbucket_git}
+Es decir, Git lleva el registro de cada cambio hecho, incluso arregla cambios hechos por diferentes
+personas en archivos compartidos.
+
+\subsection*{Bash}
+BASH (Bourne Again SHell) es un intérprete de comandos que forma parte de las herramientas estándar
+de Linux. Es complatible con Shell, por lo cual puedes correr scripts (.sh) sin modificación. En
+otras palabras, actúa como interfaz entre el kernel Linux y los usuarios o programas del modo texto.
+\citep{canepa_2018}
+En general, Bash es un intérprete de órdenes escritas en forma de texto por el usuario, que se
+ejecuta en una terminal.
+
+\subsection*{Docker}
+Es una tecnología que permite la creación y el uso de contenedores.  Sirve para usar los
+contenedores como máquinas virtuales extremadamente livianas y modulares.  Además, obtiene
+flexibilidad con estos contenedores: puede crearlos, implementarlos, copiarlos y moverlos de un
+entorno a otro, lo cual le permite optimizar sus aplicaciones para la nube.
+\citep{redhat_docker}
+También nos ayuda a asegurar la ejecución del código, permitiéndonos tener un código más eficaz.
+
+\subsection*{GitHub}
+GitHub es un sistema de gestión de proyectos y control de versiones de código, así como uno de los
+repositorios online más grandes de trabajo colaborativo en todo el mundo.
+\citep{hostinger_tutoriales_2019}
+Sirve como un servicio de hosting de repositorios almacenados en la nube. Esencialmente, hace que
+sea más fácil para los individuos y equipos usar Git como el sistema de control versiones y
+colaboración.
+\citep{kinsta_2020}
+
+\subsection*{Python}
+Python es un lenguaje interpretado, es decir, que no conlleva compilar (scripting), independiente de
+plataforma y orientado a objetos. 
+\citep{desarrollo_web_2003}
+Sirve para interpretar el código del programador, donde a su vez lo traduce y ejecuta. Utiliza
+diversos modelos de desarrollo, por lo que no exige un estilo único de programación.
+\citep{angeles_2020}
+Así pues, Python está listo para realizar cualquier tipo de programa, desde una página web, hasta
+una aplicación de windows.
+
+\subsection*{Jupyter Notebook}
+Es una interfaz web de código abierto que permite la inclusión de texto, vídeo, audio, imágenes, así
+como la ejecución de código a través del navegador en múltiples lenguajes. 
+\citep{cabrera_diaz_jupyter}
+Se utiliza para: 
+\begin{itemize}
+\item Depuración de datos: distinguir entre los datos que son importantes y los que no lo son al
+ejecutar un análisis de big data.
+\item Modelización estadística: método matemático para estimar la probabilidad de distribución de
+una característica concreta.
+\item Creación y entrenamiento de modelos de aprendizaje automático: diseño, programación y
+entrenamiento de modelos basados en aprendizaje automático
+\item Visualización de datos: representación gráfica de datos para visualizar con claridad patrones,
+tendencias, interdependencias, etc.
+\citep{digital_guide_ionos_jupyter}
+\end{itemize}
+El nombre de Jupyter significa: Julia (Ju) Python (py) Our (ter), siendo una aplicación web que
+permite realizar y compartir código abierto. Donde algunos de sus usos incluyen: modelación
+estadística, curación de datos, simulaciones numéricas, etc.
+
+\section*{Procedimientos}
+\subsection*{GitFlow}
+Es un flujo de trabajo aplicado a un repositorio Git. Sirve para que los proyectos lleven una
+planificación de entregas iterativas. Permite la paralelización del desarrollo mediante ramas
+independientes para la preparación, mantenimiento y publicación de versiones del proyecto así como
+la reparación de errores en cualquier momento.
+\citep{claventy_2020}
+Es decir, GitFlow es la columna vertebral de Git, ya que ahí están todos los movimientos que se
+trabajan, separándolos por diferentes secciones (ramas).
+
+\subsection*{Análisis exploratorio de datos}
+Es el proceso al que son sometidos los datos, examinando estos para organizar la información
+obtenida de los datos y lograr detectar un patrón en su comportamiento.
+\citep{orella_analisis_exploratorio}
+Su objetivo es explorar, describir, resumir y visualizar la naturaleza de los datos recogidos en las
+variables aleatorias del proyecto o investigación de interés, mediante la aplicación de técnicas
+simples de resumen de datos y métodos gráficos sin asumir asunciones para su interpretación.
+\citep{heix_bios_analisis_exploratorio}
+
+\subsection*{Curación de datos}
+Es un procedimiento que consiste en la detección y eliminación de errores en los datos de monitoreo
+que son capturados por personal de campo en las islas.  Cuando se toman los datos puede haber
+errores estructurales y errores de contenido.  Ejemplos de errores estructurales son: Celdas  y
+encabezados en blanco, fechas con formato , datos duplicados, etc.  Ejemplos de errores de contenido
+son: Errores de dedo, coordenadas fuera de la isla, escritura errónea en el nombre de la isla, etc.
+
+Las bitacoras son transcritas a formato de tabla (.xlsx). La o el curador de datos es el encargado
+de verificar que la estructura y el contenido esten correctos \citep{it_user_2020}. Es decir que sea
+coherente, no haya datos duplicados, ni espacios en blanco, etc. Siguiendo una estructura definida
+de acuerdo al \href{https://drive.google.com/drive/folders/1X-EdWtD6sxItwKmCyGpviCt85IvexRxo}{manual de
+curación de datos}.
+
+\section*{Cuentas}
+\begin{itemize}
+\item LastPass: Es una extensión de un navegador, que almacena las contraseñas de forma encriptada,
+lo que te permite compartirlas sin la necesidad de mostrarlas.
+\item GitHub: Es el alma de Git, con la que se puede interactuar y colaborar con diversos usuarios.
+Y almacena todo en la nube.
+\item GitKraken: Es el cerebro de Git, donde podemos organizar nuestros repositorios y decidir que
+cambio queremos hacer antes de nuestra acción final.
+\item Gravatar (WordPress): Es una imagen reconocida globalmente, que te sigue por cada sitio web
+donde aparezca tu correo electrónico.
+\item Trello: Es una interfaz que permite la organización de proyectos.
+\item Bitbucket: Es un servicio que aloja proyectos, que al igual que GitHub permite la colaboración
+entre usuarios.
+\end{itemize}
+
+\bibliography{../references/herramientas} 
+\bibliographystyle{apalike}
+
+\end{document}

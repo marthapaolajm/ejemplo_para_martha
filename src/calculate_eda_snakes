@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+# calculate_eda_snakes Calcula resumen de 5 numeros de datos serpientes Isla Isabel.
+import numpy as np
+import pandas as pd
+
+columns_names_dic = {
+        "Longitud_hocico_cola": " Longitud Hocico-Cola(cm)",
+        "Longitud_cloaca_cola": "Longitud Cloaca-Cola(cm)",
+        "Longitud_total": " Longitud Total(cm)",
+        "Masa_del_individuo": "Masa (g)",
+        "Elevacion": "Elevacion (msnm)",
+    }
+
+summary_five_numbers = pd.read_csv("data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv")
+summary_five_numbers = summary_five_numbers.rename(
+    columns = columns_names_dic
+)
+print(columns_names_dic.values())
+feature = list(columns_names_dic.values())
+
+summary_five_numbers = summary_five_numbers[[*feature, 'Bandas']]
+
+summary_five_numbers = summary_five_numbers.describe().T
+summary_five_numbers = summary_five_numbers.rename_axis("Variable") 
+summary_five_numbers = summary_five_numbers.rename(columns={"25%": "$Q_1$", "50%": "$Q_2$", "75%": "$Q_3$"})
+
+summary_five_numbers['count'] = summary_five_numbers['count'].astype('int32')
+
+
+summary_five_numbers.round(decimals=2).to_csv("reports/tables/resumen_cinco_numero_serpientes.csv")
