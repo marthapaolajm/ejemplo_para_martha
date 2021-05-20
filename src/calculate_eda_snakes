@@ -3,19 +3,28 @@
 import numpy as np
 import pandas as pd
 
+columns_names_dic = {
+        "Longitud_hocico_cola": " Longitud Hocico-Cola(cm)",
+        "Longitud_cloaca_cola": "Longitud Cloaca-Cola(cm)",
+        "Longitud_total": " Longitud Total(cm)",
+        "Masa_del_individuo": "Masa (g)",
+        "Elevacion": "Elevacion (msnm)",
+    }
+
 summary_five_numbers = pd.read_csv("data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv")
 summary_five_numbers = summary_five_numbers.rename(
-    columns={
-        "Longitud_total": "Total",
-        "Longitud_hocico_cola": "Hocico-Cola",
-        "Longitud_cloaca_cola": "Cloaca-Cola",
-        "Masa_del_individuo": "Masa (g)",
-        "Elevacion": "Elevacion",
-    }
+    columns = columns_names_dic
 )
-summary_five_numbers = summary_five_numbers.describe()
-summary_five_numbers = summary_five_numbers.rename(index={"count": "$N_{{\delta}}$", "mean": "$\\bar{{\delta}}$", "std": "$\sigma$", "25%": "$Q_1$", "50%": "$Q_2$", "75%": "$Q_3$"})
-summary_five_numbers = summary_five_numbers.rename_axis("Estadistico") 
-summary_five_numbers.drop(columns=["Temporada", "Latitud", "Longitud"]).round(decimals=2).to_csv(
-    "reports/tables/resumen_cinco_numero_serpientes.csv"
-)
+print(columns_names_dic.values())
+feature = list(columns_names_dic.values())
+
+summary_five_numbers = summary_five_numbers[[*feature, 'Bandas']]
+
+summary_five_numbers = summary_five_numbers.describe().T
+summary_five_numbers = summary_five_numbers.rename_axis("Variable") 
+summary_five_numbers = summary_five_numbers.rename(columns={"25%": "$Q_1$", "50%": "$Q_2$", "75%": "$Q_3$"})
+
+summary_five_numbers['count'] = summary_five_numbers['count'].astype('int32')
+
+
+summary_five_numbers.round(decimals=2).to_csv("reports/tables/resumen_cinco_numero_serpientes.csv")
