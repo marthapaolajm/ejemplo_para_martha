@@ -76,4 +76,8 @@ mutants:
 	mutmut run --paths-to-mutate mi_modulo
 
 tests:
-	pytest --verbose
+	pytest --mpl --verbose
+
+set_tests:
+	mkdir --parents tests/baseline
+	pytest --mpl-generate-path tests/baseline/
