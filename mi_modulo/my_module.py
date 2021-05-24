@@ -31,6 +31,7 @@ def set_box_plot_style(ax,df,seasons):
     ax.tick_params(axis="y", labelsize=20, labelrotation=90)
     ax.tick_params(axis="x", labelsize=20)
     plt.xticks(ticks_positions, seasons, size = 20, color = 'k') 
+    return fig
     
 
 def create_box_plot_data(data_feature,column_name):

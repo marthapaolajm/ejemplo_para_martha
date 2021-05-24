@@ -29,3 +29,7 @@ def test_create_box_plot_data():
     np.testing.assert_array_equal(obtained_seasons,expected_seasons) 
     for i in range(3):
         pd.testing.assert_series_equal(obtained_box_plot_data[i], expected_box_plot_data[i])
+
+@pytest.mark.mpl_image_compare
+def test_set_box_plot_style():
+    pass
