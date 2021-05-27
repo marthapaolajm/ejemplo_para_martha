@@ -22,7 +22,7 @@ def create_box_plot(boxplotdata):
     ax.boxplot(boxplotdata)
     return fig, ax
 
-def set_box_plot_style(ax,df,seasons):
+def set_box_plot_style(ax,df,seasons,fig):
     ticks_positions = ticks_positions_array(seasons)
     upper_limit = roundup(np.max(df), 10) 
     plt.ylim(0,upper_limit)  
