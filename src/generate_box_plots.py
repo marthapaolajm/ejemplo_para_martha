@@ -16,7 +16,7 @@ for feature in lista_de_variables:
 
     boxsplotdata, seasons = create_box_plot_data(data_feature, feature)
     fig, ax = create_box_plot(boxsplotdata)  #graf + grande y se remueva barras
-    set_box_plot_style(ax,data_feature[feature],seasons)
+    set_box_plot_style(ax,data_feature[feature],seasons,fig)
     set_axis_labels(ax,feature)
     
     plt.savefig(f"reports/figures/diagrama_cajas_{feature}_serpientes_isabel.png", transparent=True, dpi=300)  
