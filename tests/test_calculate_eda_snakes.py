@@ -1,6 +1,7 @@
 from mi_modulo import *
 import numpy as np
 import pandas as pd
+import pytest
 
 def test_nothing():
     pass
@@ -32,4 +33,10 @@ def test_create_box_plot_data():
 
 @pytest.mark.mpl_image_compare
 def test_set_box_plot_style():
-    pass
+    diccionario = {"A": [1,2,3,4], "Temporada":[2013,2013,2013,2013]}
+    data_feature = pd.DataFrame(diccionario)
+    feature = "A"
+    boxsplotdata, seasons = create_box_plot_data(data_feature, feature)
+    fig, ax = create_box_plot(boxsplotdata)  #graf + grande y se remueva barras
+    set_box_plot_style(ax,data_feature[feature],seasons,fig)
+    return fig
