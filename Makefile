@@ -66,14 +66,15 @@ clean:
 	rm --recursive --force mi_modulo/__pycache__
 	rm --recursive --force src/__pycache__
 	rm --recursive --force reports/pythontex-files-aed_serpientes_isla_isabel
+	rm --force .mutmut-cache
 	
 format:
 	black --line-length 100 mi_modulo
 	black --line-length 100 tests
 	black --line-length 100 src/*
 
-mutants:
-	mutmut run --paths-to-mutate mi_modulo
+mutants: set_tests
+	mutmut run --paths-to-mutate mi_modulo --runner 'pytest --mpl'
 
 tests:
 	pytest --mpl --verbose
