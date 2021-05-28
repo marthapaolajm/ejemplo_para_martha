@@ -21,18 +21,7 @@ def create_box_plot(boxplotdata):
     fig, ax = geci_plot()  #graf + grande y se remueva barras
     ax.boxplot(boxplotdata)
     return fig, ax
-
-def set_box_plot_style(ax,df,seasons,fig):
-    ticks_positions = ticks_positions_array(seasons)
-    upper_limit = roundup(np.max(df), 10) 
-    plt.ylim(0,upper_limit)  
-    rounded_ticks = rounded_ticks_array(upper_limit, 0)  
-    plt.yticks(rounded_ticks, size=20)
-    ax.tick_params(axis="y", labelsize=20, labelrotation=90)
-    ax.tick_params(axis="x", labelsize=20)
-    plt.xticks(ticks_positions, seasons, size = 20, color = 'k') 
-    return fig
-    
+  
 def create_box_plot_data(data_feature,column_name):
     boxsplotdata = []
     seasons = data_feature["Temporada"].unique() 
@@ -42,6 +31,26 @@ def create_box_plot_data(data_feature,column_name):
         boxsplotdata.append(data_feature_per_season) 
     return boxsplotdata, seasons
 
-class graficador():
-    def __init__():
-        pass
+class Plotter():
+    def __init__(self, boxplotdata):
+        self.fig, self.ax = create_box_plot(boxplotdata) 
+    
+    def set_box_plot_style(self,df,seasons):
+        self.set_xticks(seasons)
+        self.set_yticks(df)
+        self.set_ticks()
+        return self.fig
+
+    def set_ticks(self):
+        self.ax.tick_params(axis="y", labelsize=20, labelrotation=90)
+        self.ax.tick_params(axis="x", labelsize=20)
+
+    def set_yticks(self,df):
+        upper_limit = roundup(np.max(df), 10) 
+        plt.ylim(0,upper_limit) 
+        rounded_ticks = rounded_ticks_array(upper_limit, 0)  
+        plt.yticks(rounded_ticks, size=20)
+
+    def set_xticks(self,seasons):
+        ticks_positions = ticks_positions_array(seasons)
+        plt.xticks(ticks_positions, seasons, size = 20, color = 'k') 
