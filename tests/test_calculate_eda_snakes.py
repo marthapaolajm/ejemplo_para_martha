@@ -31,7 +31,7 @@ def test_create_box_plot_data():
     for i in range(3):
         pd.testing.assert_series_equal(obtained_box_plot_data[i], expected_box_plot_data[i])
 
-@pytest.mark.mpl_image_compare
+@pytest.mark.mpl_image_compare(tolerance=0)
 def test_set_box_plot_style():
     diccionario = {"A": [1,2,3,4], "Temporada":[2013,2013,2013,2013]}
     data_feature = pd.DataFrame(diccionario)
