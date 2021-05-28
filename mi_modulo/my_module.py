@@ -33,7 +33,6 @@ def set_box_plot_style(ax,df,seasons,fig):
     plt.xticks(ticks_positions, seasons, size = 20, color = 'k') 
     return fig
     
-
 def create_box_plot_data(data_feature,column_name):
     boxsplotdata = []
     seasons = data_feature["Temporada"].unique() 
@@ -42,3 +41,7 @@ def create_box_plot_data(data_feature,column_name):
         data_feature_per_season = data_feature[mask][column_name] 
         boxsplotdata.append(data_feature_per_season) 
     return boxsplotdata, seasons
+
+class graficador():
+    def __init__():
+        pass
