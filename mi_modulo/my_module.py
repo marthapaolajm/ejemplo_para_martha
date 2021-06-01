@@ -39,7 +39,7 @@ class Plotter():
         self.set_xticks(seasons)
         self.set_yticks(df)
         self.set_ticks()
-        return self.fig
+        return self.fig, self.ax
 
     def set_ticks(self):
         self.ax.tick_params(axis="y", labelsize=20, labelrotation=90)
