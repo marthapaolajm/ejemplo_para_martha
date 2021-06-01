@@ -33,10 +33,11 @@ def test_create_box_plot_data():
 
 @pytest.mark.mpl_image_compare(tolerance=0)
 def test_set_box_plot_style():
-    diccionario = {"A": [1,2,3,4], "Temporada":[2013,2013,2013,2013]}
+    diccionario = {"A": [10,22,30,44,10.1,20.2,30.3,40.4], "Temporada":[2013,2013,2013,2013,2015,2015,2015,2015]}
     data_feature = pd.DataFrame(diccionario)
     feature = "A"
     boxsplotdata, seasons = create_box_plot_data(data_feature, feature)
     Graficador = Plotter(boxsplotdata)  #graf + grande y se remueva barras
-    fig = Graficador.set_box_plot_style(data_feature[feature],seasons)
+    fig, ax = Graficador.set_box_plot_style(data_feature[feature],seasons)
+    set_axis_labels(ax, "Masa_del_individuo")
     return fig
