@@ -67,7 +67,9 @@ clean:
 	rm --recursive --force src/__pycache__
 	rm --recursive --force reports/pythontex-files-aed_serpientes_isla_isabel
 	rm --force .mutmut-cache
-	
+	rm --recursive --force tests/baseline
+	rm --recursive --force ./--runner
+
 format:
 	black --line-length 100 mi_modulo
 	black --line-length 100 tests
