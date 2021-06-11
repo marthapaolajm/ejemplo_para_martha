@@ -4,9 +4,9 @@ import numpy as np
 import pandas as pd
 
 columns_names_dic = {
-        "Longitud_hocico_cola": " Longitud Hocico-Cola(cm)",
-        "Longitud_cloaca_cola": "Longitud Cloaca-Cola(cm)",
-        "Longitud_total": " Longitud Total(cm)",
+        "Longitud_hocico_cola": " Longitud Hocico-Cola (cm)",
+        "Longitud_cloaca_cola": "Longitud Cloaca-Cola (cm)",
+        "Longitud_total": " Longitud Total (cm)",
         "Masa_del_individuo": "Masa (g)",
         "Elevacion": "Elevacion (msnm)",
     }
