@@ -64,7 +64,9 @@ el minimo, max es el maximo y $Q_1$, $Q_2$ y $Q_3$ son los cuartines uno, dos y 
 respectivamente.}
 \vspace{0.5cm}
 \pgfplotstabletypeset[string type, assign column name/.style={/pgfplots/table/column
-name={\textbf{#1}}}, every head row/.style={before row={\toprule}, after row=\midrule}, every last
+name={\textbf{#1}}}, columns/count/.style={ column name=$N_{\delta}$}, columns/std/.style={ column
+name=$\sigma$}, columns/mean/.style={ column name=$\bar{\delta}$}, columns/min/.style={ column
+name=\textit{min}}, columns/max/.style={ column name=\textit{max}}, every head row/.style={before row={\toprule}, after row=\midrule}, every last
 row/.style={after row=\bottomrule},]{\ResumenCincoNumeros}
    \label{tab:ResumenCincoNumeros}
  \end{table}
