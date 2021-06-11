@@ -11,6 +11,16 @@ Se describen las herramientas utilizadas en el equipo de ciencias de datos, así
 ### Análisis Exploratorio de Datos en Isla Isabel
 Se exponen los datos capturados del monitorio de serpiente falsa coralillo de Isla Isabel en la temporada 2008 a 2014. Mediante los cuales se describirán estos datos, mediante un resumen de cinco números y un diagrama de cajas.
 
+#### Instrucciones
+```
+git clone https://github.com/marthapaolajm/ejemplo_para_martha.git
+cd ejemplo_para_martha
+git checkout develop
+docker build --tag ejemplo_para_martha .
+docker run --volume ${PWD}:/workdir --env BITBUCKET_USERNAME="${BITBUCKET_USERNAME}" --env BITBUCKET_PASSWORD="${BITBUCKET_PASSWORD}" ejemplo_para_martha make
+xdg-open reports/aed_serpientes_isla_isabel.pdf
+```
+
 ## Tecnologías usadas
 
 En este repositorio se agregaron cinco archivos, los cuales son: 
