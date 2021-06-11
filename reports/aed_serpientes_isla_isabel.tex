@@ -12,6 +12,16 @@
 
 \begin{document} 
 
+\begin{pycode}
+import pythontex_tools as ptt
+
+datapackage = '../data/raw/datapackage.json'
+
+metadata_writer = ptt.Writer_Metadata() 
+metadata_writer.load_metadata(datapackage)
+
+\end{pycode}
+
 \author{Martha Paola Jiménez Martínez \\ 
 \small{martha.jimenez@islas.org.mx}} \title{Análisis Exploratorio de Datos en Isla Isabel \\
 \begin{large} Grupo de Ecología y Conservación de Islas \end{large}}  
@@ -24,15 +34,6 @@ coralillo en Isla  Isabel en el periodo de 2008 al 2014. Calculamos un resumen d
 utilizamos diagramas de cajas para visualizar los datos, donde podemos observar que los datos
 colectados fueron consistentes para las diferentes temporadas.
 \end{abstract}
-
-\begin{pycode}
-import pythontex_tools as ptt
-
-datapackage = '../data/raw/datapackage.json'
-
-metadata_writer = ptt.Writer_Metadata() metadata_writer.load_metadata(datapackage)
-
-\end{pycode}
 
 \section*{Datos}
 Usamos la \py{metadata_writer.write_title_with_link()}
