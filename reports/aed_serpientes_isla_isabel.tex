@@ -66,12 +66,21 @@ la canidad de registros, $\bar{\delta}$ es el promedio, $\sigma$ es la desviacio
 el minimo, max es el maximo y $Q_1$, $Q_2$ y $Q_3$ son los cuartiles uno, dos y tres
 respectivamente.}
 \vspace{0.5cm}
-\pgfplotstabletypeset[string type, assign column name/.style={/pgfplots/table/column
-name={\textbf{#1}}}, columns/count/.style={ column name=$N_{\delta}$}, columns/std/.style={ column
-name=$\sigma$}, columns/mean/.style={ column name=$\bar{\delta}$}, columns/min/.style={ column
-name=\textit{min}}, columns/max/.style={ column name=\textit{max}}, every head row/.style={before row={\toprule}, after row=\midrule}, every last
-row/.style={after row=\bottomrule},]{\ResumenCincoNumeros}
-   \label{tab:ResumenCincoNumeros}
+\pgfplotstabletypeset[
+  string type,
+  assign column name/.style={/pgfplots/table/column name={\textbf{#1}}},
+  columns/count/.style={ column name=\boldmath$N_{\delta}$}, 
+  columns/std/.style={ column name=\boldmath$\sigma$}, 
+  columns/mean/.style={ column name=\boldmath$\bar{\delta}$},
+  columns/min/.style={ column name=\textit{min}}, 
+  columns/max/.style={ column name=\textit{max}}, 
+  columns/Q1/.style={ column name=\boldmath$Q_1$},
+  columns/Q2/.style={ column name=\boldmath$Q_2$},
+  columns/Q3/.style={ column name=\boldmath$Q_3$},
+  every head row/.style={before row={\toprule}, 
+  after row=\midrule}, 
+  every last row/.style={after row=\bottomrule},]{\ResumenCincoNumeros}
+  \label{tab:ResumenCincoNumeros}
  \end{table}
 
 \section*{Resultados}
