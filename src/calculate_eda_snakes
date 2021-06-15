@@ -22,7 +22,7 @@ summary_five_numbers = summary_five_numbers[[*feature, 'Bandas']]
 
 summary_five_numbers = summary_five_numbers.describe().T
 summary_five_numbers = summary_five_numbers.rename_axis("Variable") 
-summary_five_numbers = summary_five_numbers.rename(columns={"25%": "$Q_1$", "50%": "$Q_2$", "75%": "$Q_3$"})
+summary_five_numbers = summary_five_numbers.rename(columns={"25%": "Q1", "50%": "Q2", "75%": "Q3"})
 
 summary_five_numbers['count'] = summary_five_numbers['count'].astype('int32')
 
