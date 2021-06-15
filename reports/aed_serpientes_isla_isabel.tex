@@ -14,8 +14,11 @@
 
 \begin{pycode}
 import pythontex_tools as ptt
+import pandas as pd
 
 datapackage = '../data/raw/datapackage.json'
+datapath = '../data/raw/monitoreo_serpiente_falsa_coralillo_isla_isabel_2008-2014.csv'
+snakes_data = pd.read_csv(datapath)
 
 metadata_writer = ptt.Writer_Metadata() 
 metadata_writer.load_metadata(datapackage)
@@ -29,10 +32,10 @@ metadata_writer.load_metadata(datapackage)
 \maketitle
 
 \begin{abstract}
-Presentamos un análisis exploratorio de datos de las medidas morfométricas, de serpiente falsa
-coralillo en Isla  Isabel en el periodo de 2008 al 2014. Calculamos un resumen de cinco números, y
-utilizamos diagramas de cajas para visualizar los datos, donde podemos observar que los datos
-colectados fueron consistentes para las diferentes temporadas.
+Presentamos un análisis exploratorio de datos de las medidas morfométricas de \py{len(snakes_data)}
+serpientes falsa coralillo, capturadas en Isla  Isabel en el periodo de 2008 al 2014. Calculamos un
+resumen de cinco números, y utilizamos diagramas de cajas para visualizar los datos, donde podemos
+observar que los datos colectados fueron consistentes para las diferentes temporadas.
 \end{abstract}
 
 \section*{Datos}
